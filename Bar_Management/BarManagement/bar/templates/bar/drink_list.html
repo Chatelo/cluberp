@@ -1,0 +1,28 @@
+{% extends 'bar/base.html' %}
+
+{% block content %}
+    <h2>Drink List</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for drink in drinks %}
+                <tr>
+                    <td>{{ drink.name }}</td>
+                    <td>{{ drink.price }}</td>
+                    <td>
+                        <a href="{% url 'bar:drink_detail' drink.id %}" class="btn btn-primary btn-sm">View</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+
+
+

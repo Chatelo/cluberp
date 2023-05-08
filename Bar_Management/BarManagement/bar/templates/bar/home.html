@@ -1,6 +1,32 @@
 {% extends 'bar/base.html' %}
 
 {% block content %}
-    <h1>Welcome to the Bar Management POS</h1>
+    <h1>Welcome to Century 4G Club</h1>
     <!-- Add your home page content here -->
+    <a href="{% url 'bar:drink_list' %}" class="btn btn-primary">View Drinks</a>
+    <a href="{% url 'bar:create_drink' %}" class="btn btn-success">Add Drink</a>
+    <a href="{% url 'bar:order' %}" class="btn btn-info">Place Order</a>
+    <a href="{% url 'bar:sales_reports' %}" class="btn btn-secondary">Sales Reports</a>
+    <a href="{% url 'bar:supplier' %}" class="btn btn-warning">Manage Suppliers</a>
+
+    <div class="row">
+        {% for drink in drinks %}
+            <div class="col-md-12">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h5>{{ drink.name }}</h5>
+                    </div>
+                    <div>
+                        <p>{{ drink.description }}</p>
+                    </div>
+                    <div>
+                        <p>Price: {{ drink.price }}</p>
+                    </div>
+                    <div>
+                        <a href="{% url 'bar:sell_drink' drink.id %}" class="btn btn-primary"><i class="fas fa-glass-martini-alt"></i> Sell Drink</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}

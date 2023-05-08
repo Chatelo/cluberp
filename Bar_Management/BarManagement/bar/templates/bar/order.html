@@ -3,4 +3,9 @@
 {% block content %}
     <h2>Order Processing</h2>
     <!-- Add order processing form and UI elements here -->
+    <!-- Example form for placing an order -->
+    <form method="POST">
+        {% csrf_token %}
+        <!-- Add form fields and submit button here -->
+    </form>
 {% endblock %}

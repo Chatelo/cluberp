@@ -27,6 +27,17 @@ class Drink(models.Model):
     def __str__(self):
         return self.name
 
+class Sale(models.Model):
+    drink = models.ForeignKey(Drink, on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField()
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    timestamp = models.DateTimeField(auto_now_add=True)
+    sold_by = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='sales')
+
+    def __str__(self):
+        return f"{self.drink} x {self.quantity} @ {self.price}"
+
+
 class Order(models.Model):
     waiter = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='orders')
     drinks = models.ManyToManyField(Drink)

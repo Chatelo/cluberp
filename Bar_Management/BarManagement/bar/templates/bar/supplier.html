@@ -3,4 +3,9 @@
 {% block content %}
     <h2>Supplier Management</h2>
     <!-- Add supplier management form and UI elements here -->
+    <!-- Example form for adding a supplier -->
+    <form method="POST">
+        {% csrf_token %}
+        <!-- Add form fields and submit button here -->
+    </form>
 {% endblock %}

@@ -18,6 +18,9 @@ from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth.models import User
 from rest_framework import routers, serializers, viewsets
+from bar.views import process_sale
+from bar.views import sell_drink
+
 
 
 # Serializers define the API representation.
@@ -38,8 +41,10 @@ router.register(r'users', UserViewSet)
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [
-    path('', include('bar.urls')),
+    path('', include('bar.urls', namespace='bar')),
     path('api-auth/', include('rest_framework.urls')),
+    path('process_sale/', process_sale, name='process_sale'),
+    path('sell_drink/<int:drink_id>/', sell_drink, name='sell_drink'),
     path('admin/', admin.site.urls), 
     #REST API
     # path('', include(router.urls)),

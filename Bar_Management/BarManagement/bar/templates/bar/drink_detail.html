@@ -1,0 +1,17 @@
+{% extends 'bar/base.html' %}
+
+{% block content %}
+    <h2>Drink Detail</h2>
+    <table class="table">
+        <tr>
+            <th>Name</th>
+            <td>{{ drink.name }}</td>
+        </tr>
+        <tr>
+            <th>Price</th>
+            <td>{{ drink.price }}</td>
+        </tr>
+        <!-- Add more drink details here if needed -->
+    </table>
+{% endblock %}
+
